@@ -28,13 +28,9 @@ app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
 app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
-app.use(cors());
+app.use(cors({origin: '*'}));
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
 app.use(function (req, res, next) {
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  next();
-});
 
 // file storage
 const storage = multer.diskStorage({
