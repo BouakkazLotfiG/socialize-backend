@@ -58,13 +58,10 @@ app.get('/', (req, res) => {
 // mongoose set
 const PORT = process.env.PORT || 6001;
 mongoose
-  .connect(
-    'mongodb+srv://lotfi:lotfi@cluster0.3qtafqe.mongodb.net/?retryWrites=true&w=majority',
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     app.listen(PORT, () => console.log(`Server is running on: ${PORT}`));
 
